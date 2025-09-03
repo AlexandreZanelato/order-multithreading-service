@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "449a7f7a-2550-4526-b3d5-03c1b2928059",
+		"name": "z-order-multithreading",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46188974",
+		"_collection_link": "https://dev999-0358.postman.co/workspace/estudos~9e8faf05-b12d-49f9-8f46-c6e1896ee6ce/collection/46188974-449a7f7a-2550-4526-b3d5-03c1b2928059?action=share&source=collection_link&creator=46188974"
+	},
+	"item": [
+		{
+			"name": "GET - order status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/orders/orderId/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"orderId",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - orders",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"product\": \"Notebook\",\r\n  \"quantity\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

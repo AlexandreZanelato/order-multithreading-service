@@ -1,0 +1,64 @@
+### IDEs ###
+# IntelliJ / Eclipse / VSCode
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+
+### Build ###
+/target/
+/out/
+/build/
+/bin/
+/dist/
+/nbbuild/
+/nbdist/
+/.nb-gradle/
+/.apt_generated
+.factorypath
+.sts4-cache
+
+### Gradle ###
+.gradle
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+!**/src/main/**/out/
+!**/src/test/**/out/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# Maven Wrapper
+.mvn/
+mvnw
+mvnw.cmd
+
+# Maven build artifacts
+target/
+dependency-reduced-pom.xml
+build.log
+
+# Maven-specific temp files
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tmp
+
+### NetBeans ###
+/nbproject/private/
+
+### Mac OS ###
+.DS_Store
+
+### Logs gerais ###
+*.log
+
+### JMeter reports e temporários ###
+jmeter/report/
+jmeter/temp/
+*.jtl
+jmeter.log

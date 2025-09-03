@@ -1,0 +1,6 @@
+services:
+  order-service:
+    build: .
+    container_name: order-service
+    ports:
+      - "8080:8080"
