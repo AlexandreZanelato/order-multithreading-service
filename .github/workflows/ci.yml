@@ -31,7 +31,7 @@ jobs:
         run: ls -lh target/*.jar
 
       - name: Build imagem Docker
-        run: docker build -t zanelato/order-service
+        run: docker build -t zanelato/order-service .
 
       - name: Testar container Docker
         run: docker run --rm zanelato/order-service
