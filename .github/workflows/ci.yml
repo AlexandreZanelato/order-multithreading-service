@@ -34,4 +34,11 @@ jobs:
         run: docker build -t zanelato/order-service .
 
       - name: Testar container Docker
-        run: docker run --rm zanelato/order-service
+        run: docker run -d -p 8080:8080 --name test-order zanelato/order-service
+
+      - name: Esperar e testar POST /orders
+        run: |
+          sleep 10
+          curl --fail -X POST http://localhost:8080/orders \
+            -H "Content-Type: application/json" \
+            -d '{"product":"Notebook","quantity":2}'
