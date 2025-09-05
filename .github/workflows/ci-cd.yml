@@ -44,4 +44,4 @@ jobs:
             --platform=managed \
             --region=southamerica-east1 \
             --allow-unauthenticated \
-            --set-env-vars SPRING_PROFILES_ACTIVE=dev
+            --set-env-vars SPRING_PROFILES_ACTIVE=staging
