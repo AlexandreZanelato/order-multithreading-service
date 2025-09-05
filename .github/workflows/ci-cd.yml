@@ -77,5 +77,6 @@ jobs:
             --allow-unauthenticated \
             --add-cloudsql-instances=${{ secrets.CLOUDSQL_INSTANCE }} \
             --set-env-vars SPRING_PROFILES_ACTIVE=prod \
+            --timeout=300s
             --set-env-vars DB_USERNAME=${{ secrets.DB_USERNAME }} \
             --set-env-vars DB_PASSWORD=${{ secrets.DB_PASSWORD }}
