@@ -11,8 +11,10 @@ Este projeto é um microserviço desenvolvido com **Spring Boot** que processa p
 - Spring Web
 - Spring Data JPA
 - Spring Async
+- Spring Actuator
 - SpringDoc OpenAPI (Swagger)
-- H2 Database (ambiente de teste)
+- H2 Database (dev/test/staging)
+- MySQL Cloud SQL (prod)
 - Maven
 - Docker & Docker Compose
 - GitHub Actions (CI/CD)
@@ -26,10 +28,10 @@ Este projeto é um microserviço desenvolvido com **Spring Boot** que processa p
 - **Programação assíncrona com `@Async`** e `CompletableFuture`
 - **Testes unitários e de integração** com cobertura de comportamento
 - **Uso de `record` para DTOs**: imutabilidade e clareza
-- **Configuração de `application-test.yml`** para ambiente isolado
+- **Ambientes isolados:** `application-test.yml`/`application-dev.yml`/`application-staging.yml`/`application-prod.yml`
 - **Dockerfile otimizado** para produção
 - **CI/CD com GitHub Actions**: build, testes e deploy automatizado
-- **Uso de secrets no GitHub** para proteger credenciais
+- **Segurança:** Uso de **secrets no GitHub** para proteger credenciais
 
 ---
 
@@ -66,6 +68,15 @@ src/
 │   │   └── service/        # Testes de Integração
 
 ````
+---
+## Ambientes
+
+| Ambiente | Banco           | Profile | Deploy                                           |
+| -------- | --------------- | ------- | ------------------------------------------------ |
+| Dev      | H2 (local)      | dev     | mvn spring-boot\:run                             |
+| Staging  | H2 (Cloud Run)  | staging | Push main branch → CI/CD                         |
+| Prod     | MySQL Cloud SQL | prod    | Workflow manual (`workflow_dispatch`) ou release |
+
 ---
 
 ## Endpoints da API
@@ -125,6 +136,12 @@ Build da imagem:
 docker build -t z-order/order-service .
 ```
 
+Rodar local:
+
+```
+docker run -d -p 8080:8080 z-order/order-service .
+```
+
 Subir com Docker Compose:
 
 ```
@@ -138,8 +155,10 @@ docker-compose up -d
 Pipeline automatizado com GitHub Actions:
 - Build e testes com Maven
 - Geração de JAR com preview features
-- Build da imagem Docker
-- Push para Docker Hub
+- Build e push da imagem Docker
+- Deploy automático em staging, push na main
+- Deploy manual em prod via workflow_dispatch ou release
+- Uso de secrets para credenciais no, Docker Hub, GCP, Cloud SQL
 
 ---
 
@@ -150,3 +169,5 @@ Pipeline automatizado com GitHub Actions:
 Pode ser usado como base para aprendizado.
 
 Não é uma aplicação pronta para produção.
+
+Perfis ativos (dev, staging, prod) configurados via SPRING_PROFILES_ACTIVE

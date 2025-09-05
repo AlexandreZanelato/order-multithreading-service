@@ -2,20 +2,14 @@ server:
   port: 8080
 
 spring:
-  application:
-    name: z-order-service
-  jpa:
-    hibernate:
-      ddl-auto: update
-    defer-datasource-initialization: true
-  sql:
-    init:
-      mode: always
   datasource:
     url: jdbc:h2:mem:devdb
     driver-class-name: org.h2.Driver
     username: sa
     password:
+  jpa:
+    hibernate:
+      ddl-auto: update
   h2:
     console:
       settings:
