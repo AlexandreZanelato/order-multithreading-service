@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://google/orderdb?cloudSqlInstance=${CLOUDSQL_INSTANCE}&socketFactory=com.google.cloud.sql.mysql.SocketFactory
+    url: jdbc:mysql://google/orderdb?cloudSqlInstance=${CLOUDSQL_INSTANCE}&socketFactory=${DB_SOCKET_FACTORY}
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
