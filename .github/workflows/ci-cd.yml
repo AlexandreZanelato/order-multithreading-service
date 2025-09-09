@@ -70,11 +70,6 @@ jobs:
 
       - name: Deploy no Cloud Run (prod)
         run: |
-          echo "Verificando variáveis antes do deploy..."
-          echo "CLOUDSQL_INSTANCE=${{ secrets.CLOUDSQL_INSTANCE }}"
-          echo "DB_USERNAME=${{ secrets.DB_USERNAME }}"
-          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" | sed 's/./*/g'
-          
           gcloud run deploy order-service-prod \
             --image=${{ secrets.DOCKER_USERNAME }}/order-service:latest \
             --platform=managed \
