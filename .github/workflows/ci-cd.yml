@@ -70,15 +70,21 @@ jobs:
 
       - name: Deploy no Cloud Run (prod)
         run: |
+          echo "Verificando variáveis antes do deploy..."
+          echo "CLOUDSQL_INSTANCE=${{ secrets.CLOUDSQL_INSTANCE }}"
+          echo "DB_USERNAME=${{ secrets.DB_USERNAME }}"
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" | sed 's/./*/g'
+          
           gcloud run deploy order-service-prod \
             --image=${{ secrets.DOCKER_USERNAME }}/order-service:latest \
             --platform=managed \
             --region=southamerica-east1 \
             --allow-unauthenticated \
-            --set-env-vars SPRING_PROFILES_ACTIVE=prod \
             --add-cloudsql-instances=${{ secrets.CLOUDSQL_INSTANCE }} \
+            --set-env-vars SPRING_PROFILES_ACTIVE=prod \
+            --set-env-vars GOOGLE_CLOUD_PROJECT=${{ secrets.GCP_PROJECT_ID }} \
+            --set-env-vars CLOUDSQL_INSTANCE=${{ secrets.CLOUDSQL_INSTANCE }} \
             --set-env-vars DB_USERNAME=${{ secrets.DB_USERNAME }} \
             --set-env-vars DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
-            --set-env-vars GOOGLE_CLOUD_PROJECT=${{ secrets.GCP_PROJECT_ID }} \
             --set-env-vars DB_SOCKET_FACTORY=com.google.cloud.sql.mysql.SocketFactory \
             --timeout=300s
